@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sadig Ishar – Rechtsanwältin Berlin</title>
+  <meta name="description" content="Rechtsanwältin Sadig Ishar – Berlin. Beratung und Vertretung in Arbeitsrecht, Vertragsrecht, Familien- & Erbrecht sowie Straf- und Ordnungswidrigkeitenrecht. Persönlich, diskret, transparent." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Basis ───────────────────────────────── */
+    body { margin:0; padding:0; font-family:'Inter',sans-serif; color:#292524; }
+    h1,h2,h3,h4 { font-family:'Roboto Slab',serif; letter-spacing:-0.01em; }
+    a { transition: color .2s, opacity .2s; }
+
+    /* ── Buttons – nur Farbe, keine Bewegung ─── */
+    .btn-primary  { background-color:#1e40af; color:#f8fafc; letter-spacing:.05em; transition:background .2s; }
+    .btn-primary:hover  { background-color:#2563eb; }
+    .btn-secondary { border:1px solid #d6d3d1; color:#44403c; letter-spacing:.05em; transition:background .2s, color .2s, border-color .2s; }
+    .btn-secondary:hover { background-color:#f5f5f4; color:#1c1917; border-color:#a8a29e; }
+    .btn-secondary-inverse { border:1px solid rgba(255,255,255,.45); color:#ffffff; letter-spacing:.05em; transition:background .2s, border-color .2s; }
+    .btn-secondary-inverse:hover { background-color:rgba(255,255,255,.12); border-color:rgba(255,255,255,.75); }
+
+    /* ── Eyebrow / Linien ────────────────────── */
+    .eyebrow {
+      display:block; font-family:'Inter',sans-serif;
+      font-size:.68rem; font-weight:600;
+      letter-spacing:.25em; text-transform:uppercase;
+      color:#1e40af; margin-bottom:.6rem;
+    }
+    .rule { border:none; border-top:1px solid #e7e5e4; margin:0; }
+
+    /* ── Hero ────────────────────────────────── */
+    .hero-section {
+      background:
+        radial-gradient(60% 55% at 82% 12%, rgba(30,64,175,.12), transparent 70%),
+        radial-gradient(55% 55% at 10% 95%, rgba(180,83,9,.13), transparent 70%),
+        #fdf8f1;
+    }
+    .hero-watermark {
+      position:absolute; left:50%; top:68%;
+      transform:translate(-50%,-50%);
+      font-family:'Roboto Slab',serif;
+      font-weight:700; font-size:16vw; line-height:1;
+      color:#292524; opacity:.035;
+      user-select:none; pointer-events:none;
+      letter-spacing:-.03em; white-space:nowrap;
+    }
+    .hero-trust {
+      font-size:.78rem; color:#78716c; font-weight:400;
+    }
+
+    /* ── Hero-Bild ────────────────────────────── */
+    .hero-img-frame { display:block; width:100%; border:1px solid #e7e5e4; }
+    .hero-img-frame img { display:block; width:100%; }
+
+    /* ── Philosophie ──────────────────────────── */
+    .phil-col { padding-top:1.75rem; border-top:2px solid #93c5fd; }
+    .phil-col h3 { font-size:1.1rem; font-weight:600; margin-bottom:.5rem; color:#ffffff; }
+    .phil-col p  { font-size:.875rem; color:#d6d3d1; line-height:1.8; }
+    .phil-icon   { color:#93c5fd; margin-bottom:1rem; }
+    .philosophie-bg {
+      background:
+        linear-gradient(rgba(20,17,14,.84), rgba(20,17,14,.88)),
+        url('kanzlei.jpg') center 35% / cover no-repeat;
+    }
+
+    /* ── Leistungen ───────────────────────────── */
+    .service-col { padding-top:1.75rem; border-top:1px solid #e7e5e4; }
+    .service-icon { color:#1e40af; margin-bottom:1rem; }
+    .service-col h3 { font-size:1.05rem; font-weight:600; margin-bottom:.6rem; }
+    .service-col p { font-size:.9rem; color:#57534e; line-height:1.85; }
+
+    /* ── Ablauf / Prozess ─────────────────────── */
+    .process-step { position:relative; padding-top:1.5rem; border-top:1px solid #e7e5e4; }
+    .process-num {
+      font-family:'Roboto Slab',serif; font-weight:700; font-size:.85rem;
+      color:#1e40af; letter-spacing:.05em; margin-bottom:.75rem; display:block;
+    }
+    .process-step h3 { font-size:1rem; font-weight:600; margin-bottom:.5rem; }
+    .process-step p { font-size:.85rem; color:#57534e; line-height:1.75; }
+
+    /* ── Referenzen ───────────────────────────── */
+    .testimonial-row { padding:2rem 0; border-top:1px solid #e7e5e4; }
+    .testimonial-row:last-child { border-bottom:1px solid #e7e5e4; }
+    .testimonial-text {
+      font-family:'Roboto Slab',serif; font-weight:300; font-style:italic;
+      font-size:1.05rem; color:#44403c; line-height:1.75; max-width:56ch;
+    }
+    .testimonial-name { font-size:.78rem; color:#a8a29e; margin-top:1rem; letter-spacing:.05em; text-transform:uppercase; }
+
+    /* ── FAQ ──────────────────────────────────── */
+    .faq-item { border-bottom:1px solid #e7e5e4; }
+    .faq-item summary {
+      list-style:none; cursor:pointer; padding:1.35rem 0;
+      display:flex; align-items:center; justify-content:space-between; gap:1rem;
+      font-size:.975rem; font-weight:500; color:#292524;
+    }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-chevron { flex-shrink:0; color:#a8a29e; transition:transform .2s; }
+    .faq-item[open] .faq-chevron { transform:rotate(180deg); color:#1e40af; }
+    .faq-item p { font-size:.875rem; color:#57534e; line-height:1.8; padding:0 0 1.5rem; max-width:60ch; }
+
+    /* ── Kontakt Info ─────────────────────────── */
+    .info-col a, .info-col span {
+      display:block; font-size:.9rem; font-weight:500; color:#f5f5f4; line-height:1.9; transition:color .2s;
+    }
+    .info-col a:hover { color:#93c5fd; }
+    .info-col .col-label {
+      font-size:.65rem; font-weight:600; letter-spacing:.2em;
+      text-transform:uppercase; color:#a8a29e; margin-bottom:.4rem; display:block;
+    }
+    .hours-row { display:flex; gap:2rem; line-height:1.9; }
+    .hours-row span { font-size:.82rem; font-weight:400; color:#d6d3d1; }
+    .hours-row span:first-child { color:#a8a29e; min-width:9rem; }
+
+    /* ── Kontakt Hintergrundbild ───────────────── */
+    .kontakt-bg {
+      background:
+        linear-gradient(rgba(20,17,14,.84), rgba(20,17,14,.88)),
+        url('gericht.jpg') center 30% / cover no-repeat;
+    }
+    .info-col .info-note {
+      margin-top:1rem; font-size:.8rem; font-weight:400; color:#a8a29e; line-height:1.7;
+    }
+
+    /* ── Footer ───────────────────────────────── */
+    .footer-col-label {
+      font-size:.7rem; font-weight:600; letter-spacing:.16em;
+      text-transform:uppercase; color:#a8a29e;
+    }
+    .footer-link { display:block; font-size:.925rem; color:#d6d3d1; line-height:1.9; text-decoration:none; transition:color .2s; }
+    .footer-link:hover { color:#ffffff; }
+    .footer-geo {
+      font-family:'Courier New', monospace; font-size:.7rem;
+      letter-spacing:.04em; color:#78716c;
+    }
+
+    /* ── Keylines (reduzierter Cyberbrutalismus) ─ */
+    .keyline { border-left:1px solid rgba(41,37,36,.14); border-right:1px solid rgba(41,37,36,.14); }
+    .keyline-dark { border-left:1px solid rgba(255,255,255,.15); border-right:1px solid rgba(255,255,255,.15); }
+    .keyline-cross { position:absolute; width:0; height:0; }
+    .keyline-cross::before, .keyline-cross::after { content:''; position:absolute; background:rgba(41,37,36,.45); }
+    .keyline-cross::before { top:-0.5px; left:-4px; width:9px; height:1px; }
+    .keyline-cross::after  { top:-4px; left:-0.5px; width:1px; height:9px; }
+    .keyline-cross.dark::before, .keyline-cross.dark::after { background:rgba(255,255,255,.5); }
+    .keyline-cross.tl { top:0; left:0; }
+    .keyline-cross.tr { top:0; right:0; }
+    .keyline-cross.bl { bottom:0; left:0; }
+    .keyline-cross.br { bottom:0; right:0; }
+
+    /* ── Mobiles Menü – erzwungen nur auf kleinen Screens ── */
+    @media (min-width:1024px) {
+      #mob-btn     { display:none !important; }
+      #mob-overlay { display:none !important; }
+    }
+
+    /* ── Slide-in Panel (von rechts) ────────── */
+    .mob-overlay {
+      position:fixed; top:0; right:0; bottom:0;
+      width:min(360px, 100vw);
+      z-index:200;
+      background:#ffffff;
+      box-shadow:-32px 0 64px -24px rgba(28,25,23,.22), -2px 0 0 rgba(28,25,23,.04);
+      transform:translateX(100%);
+      transition:transform .45s cubic-bezier(.16,1,.3,1);
+      display:flex; flex-direction:column;
+    }
+    .mob-overlay.open { transform:translateX(0); }
+
+    /* Abdunklung hinter dem Panel */
+    .mob-backdrop {
+      position:fixed; inset:0; z-index:199;
+      background:rgba(28,25,23,.3);
+      backdrop-filter:blur(2px);
+      opacity:0; pointer-events:none;
+      transition:opacity .35s ease;
+    }
+    .mob-backdrop.open { opacity:1; pointer-events:auto; }
+
+    .mob-inner {
+      display:flex; flex-direction:column; justify-content:space-between;
+      height:100%; padding:5.5rem 1.85rem 2.25rem; overflow-y:auto;
+    }
+
+    .mob-inner nav > * {
+      opacity:0; transform:translateX(10px);
+      transition:opacity .4s ease, transform .4s ease;
+    }
+    .mob-overlay.open .mob-inner nav > * { opacity:1; transform:translateX(0); }
+    .mob-inner nav > *:nth-child(1) { transition-delay:.06s; }
+    .mob-inner nav > *:nth-child(2) { transition-delay:.11s; }
+    .mob-inner nav > *:nth-child(4) { transition-delay:.16s; }
+    .mob-inner nav > *:nth-child(6) { transition-delay:.21s; }
+
+    .mob-eyebrow { margin-bottom:1.4rem; }
+
+    .mob-close {
+      position:absolute; top:1.6rem; right:1.6rem; z-index:1;
+      width:2.25rem; height:2.25rem; display:flex; align-items:center; justify-content:center;
+      background:none; border:none; padding:0; cursor:pointer; color:#44403c;
+    }
+
+    .mob-nav-link {
+      display:flex; align-items:center; justify-content:space-between;
+      font-family:'Inter',sans-serif;
+      font-size:1.05rem; font-weight:500; color:#292524;
+      padding:.9rem 0; border-bottom:1px solid #e7e5e4;
+      cursor:pointer; text-decoration:none;
+    }
+
+    .mob-chevron {
+      width:16px; height:16px; stroke:#a8a29e;
+      fill:none; stroke-width:2; stroke-linecap:round;
+      transition:transform .2s; flex-shrink:0;
+    }
+
+    .mob-sub {
+      padding:.4rem 0 .5rem 1.1rem; margin-left:.1rem;
+      border-left:1px solid #e7e5e4;
+    }
+    .mob-sub a {
+      display:block; font-family:'Inter',sans-serif;
+      font-size:.9rem; color:#78716c;
+      padding:.5rem 0; text-decoration:none;
+    }
+    .mob-sub.hidden { display:none; }
+
+    .mob-footer {
+      padding-top:1.75rem; margin-top:.5rem; border-top:1px solid #e7e5e4;
+      display:flex; flex-direction:column; gap:.4rem;
+    }
+    .mob-footer > * {
+      opacity:0; transform:translateX(10px);
+      transition:opacity .4s ease, transform .4s ease;
+    }
+    .mob-overlay.open .mob-footer > * { opacity:1; transform:translateX(0); }
+    .mob-footer > *:nth-child(1) { transition-delay:.26s; }
+    .mob-footer > *:nth-child(2) { transition-delay:.3s; }
+    .mob-footer > *:nth-child(3) { transition-delay:.34s; }
+    .mob-footer .mob-phone {
+      font-size:1.05rem; font-weight:600; color:#1e40af;
+      font-family:'Inter',sans-serif; text-decoration:none;
+    }
+    .mob-footer .mob-email {
+      font-size:.85rem; color:#78716c;
+      font-family:'Inter',sans-serif; text-decoration:none;
+    }
+
+    /* Hamburger → X Übergang */
+    .icon-bar {
+      display:block; width:22px; height:1.5px;
+      background:#44403c; border-radius:2px;
+      transition:transform .25s, opacity .2s;
+      transform-origin:center;
+    }
+    #mob-btn { display:flex; flex-direction:column; gap:5px; padding:.35rem; background:none; border:none; cursor:pointer; }
+    #mob-btn.open .bar-1 { transform:translateY(6.5px) rotate(45deg); }
+    #mob-btn.open .bar-2 { opacity:0; }
+    #mob-btn.open .bar-3 { transform:translateY(-6.5px) rotate(-45deg); }
+
+    /* Anchor-Offset */
+    section[id] { scroll-margin-top:80px; }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- ─── Navigation ───────────────────────────── -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-t border-b border-stone-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 keyline" style="position:relative;">
+      <span class="keyline-cross tl" aria-hidden="true"></span>
+      <span class="keyline-cross tr" aria-hidden="true"></span>
+      <div class="h-20 flex items-center justify-between">
+
+        <a href="#" class="text-xl font-semibold tracking-tight text-stone-900" style="font-family:'Roboto Slab',serif;">
+          Sadig Ishar
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-9 text-xs font-semibold tracking-[.1em] uppercase">
+          <a href="#" class="py-2 text-stone-500 hover:text-stone-900">Startseite</a>
+
+          <div class="relative group">
+            <button class="inline-flex items-center gap-1.5 py-2 text-stone-500 hover:text-stone-900 uppercase focus:outline-none" aria-haspopup="true" aria-expanded="false">
+              Über uns
+              <svg class="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            <div class="pointer-events-none absolute left-0 top-full mt-3 w-56 bg-white border border-stone-200 shadow-sm opacity-0 translate-y-1 transition duration-150 ease-out">
+              <div class="py-2 normal-case tracking-normal font-medium">
+                <a href="#" class="block px-4 py-2.5 text-sm text-stone-700 hover:bg-[#f2ebe0] hover:text-stone-900">Kanzlei</a>
+                <a href="#" class="block px-4 py-2.5 text-sm text-stone-700 hover:bg-[#f2ebe0] hover:text-stone-900">Team</a>
+                <a href="#" class="block px-4 py-2.5 text-sm text-stone-700 hover:bg-[#f2ebe0] hover:text-stone-900">Karriere</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <button class="inline-flex items-center gap-1.5 py-2 text-stone-500 hover:text-stone-900 uppercase focus:outline-none" aria-haspopup="true" aria-expanded="false">
+              Leistungen
+              <svg class="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            <div class="pointer-events-none absolute left-0 top-full mt-3 w-64 bg-white border border-stone-200 shadow-sm opacity-0 translate-y-1 transition duration-150 ease-out
+                         group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:translate-y-0">
+              <div class="py-2 normal-case tracking-normal font-medium">
+                <a href="#leistungen" class="block px-4 py-2.5 text-sm text-stone-700 hover:bg-[#f2ebe0] hover:text-stone-900">Arbeitsrecht</a>
+                <a href="#leistungen" class="block px-4 py-2.5 text-sm text-stone-700 hover:bg-[#f2ebe0] hover:text-stone-900">Vertragsrecht</a>
+                <a href="#leistungen" class="block px-4 py-2.5 text-sm text-stone-700 hover:bg-[#f2ebe0] hover:text-stone-900">Familien- &amp; Erbrecht</a>
+                <a href="#leistungen" class="block px-4 py-2.5 text-sm text-stone-700 hover:bg-[#f2ebe0] hover:text-stone-900">Straf- &amp; OWi-Recht</a>
+                <a href="#leistungen" class="block px-4 py-2.5 text-sm text-stone-700 hover:bg-[#f2ebe0] hover:text-stone-900">Allgemeine Beratung</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="#kontakt" class="py-2 text-stone-500 hover:text-stone-900">Kontakt</a>
+        </nav>
+
+        <a href="tel:+493012345678" class="btn-primary hidden md:inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium">
+          <span class="sr-only">Ruf uns an</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.11a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.61.59A2 2 0 0 1 22 16.92Z"/>
+          </svg>
+          +49 30 12345678
+        </a>
+
+        <!-- Animierter Hamburger-Button -->
+        <button id="mob-btn" class="lg:hidden" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mob-overlay">
+          <span class="icon-bar bar-1"></span>
+          <span class="icon-bar bar-2"></span>
+          <span class="icon-bar bar-3"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Backdrop ───────────────────────────────── -->
+  <div id="mob-backdrop" class="mob-backdrop" aria-hidden="true"></div>
+
+  <!-- ─── Slide-in Mobilmenü ──────────────────────── -->
+  <div id="mob-overlay" class="mob-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+    <button class="mob-close" onclick="closeMob()" aria-label="Menü schließen">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="mob-inner">
+      <div>
+        <span class="eyebrow mob-eyebrow">Navigation</span>
+        <nav>
+        <a href="#" class="mob-nav-link" onclick="closeMob()">Startseite</a>
+
+        <div class="mob-nav-link" id="mob-about-btn" role="button" tabindex="0">
+          <span>Über uns</span>
+          <svg class="mob-chevron" id="mob-about-chev" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg>
+        </div>
+        <div class="mob-sub hidden" id="mobile-about-menu">
+          <a href="#" onclick="closeMob()">Kanzlei</a>
+          <a href="#" onclick="closeMob()">Team</a>
+          <a href="#" onclick="closeMob()">Karriere</a>
+        </div>
+
+        <div class="mob-nav-link" id="mob-services-btn" role="button" tabindex="0">
+          <span>Leistungen</span>
+          <svg class="mob-chevron" id="mob-services-chev" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg>
+        </div>
+        <div class="mob-sub hidden" id="mobile-services-menu">
+          <a href="#leistungen" onclick="closeMob()">Arbeitsrecht</a>
+          <a href="#leistungen" onclick="closeMob()">Vertragsrecht</a>
+          <a href="#leistungen" onclick="closeMob()">Familien- &amp; Erbrecht</a>
+          <a href="#leistungen" onclick="closeMob()">Straf- &amp; OWi-Recht</a>
+          <a href="#leistungen" onclick="closeMob()">Allgemeine Beratung</a>
+        </div>
+
+        <a href="#kontakt" class="mob-nav-link" onclick="closeMob()">Kontakt</a>
+        </nav>
+      </div>
+
+      <div class="mob-footer">
+        <span class="eyebrow mob-eyebrow" style="margin-bottom:.75rem;">Kontakt</span>
+        <a href="tel:+493012345678" class="mob-phone">+49 30 12345678</a>
+        <a href="mailto:kanzlei@sadig-ishar.de" class="mob-email">kanzlei@sadig-ishar.de</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Hero ──────────────────────────────────── -->
+  <section class="hero-section relative overflow-hidden">
+
+    <!-- Hintergrund-Wasserzeichen -->
+    <div class="hero-watermark" aria-hidden="true">RECHT</div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 md:py-36 relative z-10 keyline">
+      <div class="grid md:grid-cols-[1fr_460px] gap-12 items-center">
+
+        <!-- Text-Spalte -->
+        <div>
+            <span class="eyebrow">Rechtsanwältin · Arbeits-, Vertrags- &amp; Familienrecht · Berlin</span>
+            <h1 class="mb-8" style="font-size:clamp(2.2rem,4vw,3.4rem); line-height:1.18; letter-spacing:-.015em; font-weight:300;">
+              Rechtliche Klarheit,<br>
+              <span class="text-blue-700" style="font-weight:400;">wenn es darauf ankommt.</span>
+            </h1>
+            <p class="text-stone-500 leading-[1.85] mb-5" style="max-width:48ch; font-weight:300; font-size:.975rem;">
+              Rechtsanwältin Sadig Ishar berät und vertritt Privatpersonen, Familien
+              und Unternehmen in Berlin – von der ersten Einschätzung bis zur
+              gerichtlichen Vertretung. Klar in der Sprache, konsequent in der
+              Sache und persönlich erreichbar, wenn es zählt.
+            </p>
+            <p class="text-stone-500 leading-[1.85] mb-10" style="max-width:48ch; font-weight:300; font-size:.975rem;">
+              Ob Kündigung, Vertragsprüfung, Trennung oder Vorladung – jede
+              Situation verdient eine eigene Einschätzung statt einer
+              Standardlösung. Deshalb steht am Anfang jedes Mandats ein
+              ausführliches Gespräch, in dem wir gemeinsam klären, was auf
+              dem Spiel steht und welcher Weg tatsächlich zum Ziel führt.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+              <a href="#kontakt" class="btn-primary rounded-md px-7 py-3 font-medium text-sm">Erstgespräch vereinbaren</a>
+              <a href="#leistungen" class="btn-secondary rounded-md px-7 py-3 font-medium text-sm">Leistungen ansehen</a>
+            </div>
+            <p class="hero-trust">Kostenfreies Erstgespräch · Termine auch kurzfristig · Beratung auch online</p>
+        </div>
+
+        <!-- Bild-Spalte -->
+        <div class="flex justify-center md:justify-end">
+          <div class="hero-img-frame rounded-xl overflow-hidden" style="max-width:460px;">
+            <img src="anwältin.jpg" alt="Rechtsanwältin Sadig Ishar" class="rounded-xl"
+                 style="filter:contrast(1.03) saturate(0.92);">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Philosophie ───────────────────────────── -->
+  <section class="bg-[#f2ebe0] border-t border-[#e2d5c0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline-dark philosophie-bg" style="position:relative;">
+      <span class="keyline-cross tl dark" aria-hidden="true"></span>
+      <span class="keyline-cross tr dark" aria-hidden="true"></span>
+      <div class="mb-16 max-w-2xl">
+        <span class="eyebrow" style="color:#93c5fd;">Unsere Grundsätze</span>
+        <h2 class="text-3xl font-normal mb-5 text-white">Philosophie</h2>
+        <p class="text-stone-200 text-sm leading-[1.85] font-light">
+          Rechtsberatung ist Vertrauenssache. Wir verstehen unsere Aufgabe
+          deshalb nicht nur als juristisches Handwerk, sondern als
+          Begleitung durch eine Situation, die für Sie oft ungewohnt und
+          belastend ist. Drei Grundsätze bestimmen dabei unsere Arbeit.
+        </p>
+      </div>
+      <hr class="rule mb-14" style="border-top-color:rgba(255,255,255,.2);">
+      <div class="grid md:grid-cols-3 gap-12">
+
+        <div class="phil-col">
+          <div class="phil-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 9V6a2 2 0 0 1 2-2h3"/>
+              <path d="M15 4h3a2 2 0 0 1 2 2v3"/>
+              <path d="M20 15v3a2 2 0 0 1-2 2h-3"/>
+              <path d="M9 20H6a2 2 0 0 1-2-2v-3"/>
+              <line x1="12" y1="9" x2="12" y2="15"/><line x1="9" y1="12" x2="15" y2="12"/>
+            </svg>
+          </div>
+          <h3>Präzision</h3>
+          <p>Jedes Mandat wird individuell und mit größter Sorgfalt aufbereitet – von der ersten Akteneinsicht bis zur letzten Frist. Sie erhalten regelmäßige, verständliche Updates zum Stand Ihres Verfahrens, ohne unerklärte Fachbegriffe.</p>
+        </div>
+
+        <div class="phil-col">
+          <div class="phil-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L3 6.5v5c0 5.25 4.5 9.5 9 9.5s9-4.25 9-9.5v-5L12 2z"/>
+              <polyline points="9,12 11,14 15,10"/>
+            </svg>
+          </div>
+          <h3>Vertrauen</h3>
+          <p>Ob Kündigung, Trennung oder Ermittlungsverfahren – Ihre Situation bleibt vertraulich. Wir hören zuerst zu, bevor wir raten, und vertreten konsequent Ihre Interessen, nicht den bequemeren Weg.</p>
+        </div>
+
+        <div class="phil-col">
+          <div class="phil-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+          </div>
+          <h3>Kompetenz</h3>
+          <p>Fundiertes Fachwissen in Arbeits-, Vertrags-, Familien- und Strafrecht, kombiniert mit Verhandlungserfahrung vor Gerichten und Behörden in Berlin. Wir denken strategisch – und sprechen im Zweifel direkt mit der Gegenseite.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Leistungen ────────────────────────────── -->
+  <section id="leistungen" class="bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline">
+      <div class="mb-16 max-w-2xl">
+        <span class="eyebrow">Rechtsgebiete</span>
+        <h2 class="text-3xl font-normal mb-5">Leistungen</h2>
+        <p class="text-stone-500 text-sm leading-[1.85] font-light">
+          Wir decken die Rechtsbereiche ab, die im Alltag von Privatpersonen und
+          Unternehmen am häufigsten zu Fragen führen – strukturiert, kompetent
+          und mit Fokus auf Ihr Ergebnis.
+        </p>
+      </div>
+      <hr class="rule mb-14">
+
+      <div class="grid md:grid-cols-2 gap-x-16 gap-y-14">
+
+        <div class="service-col">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+          <h3>Arbeitsrecht</h3>
+          <p>Kündigung erhalten, Aufhebungsvertrag auf dem Tisch oder Streit um Abfindung und Zeugnis: Wir prüfen Fristen, verhandeln mit Ihrem Arbeitgeber und vertreten Sie, wenn nötig, vor dem Arbeitsgericht. Dabei arbeiten wir sowohl für Arbeitnehmerinnen und Arbeitnehmer als auch für Unternehmen, die eine verlässliche arbeitsrechtliche Begleitung suchen.</p>
+        </div>
+
+        <div class="service-col">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+              <line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/>
+            </svg>
+          </div>
+          <h3>Vertragsrecht</h3>
+          <p>Verträge sollen schützen, nicht überraschen. Wir prüfen, gestalten und verhandeln Kauf-, Dienst- und Werkverträge sowie Allgemeine Geschäftsbedingungen – verständlich formuliert und auf Ihr konkretes Risiko zugeschnitten, statt in Textbausteinen, die niemand liest.</p>
+        </div>
+
+        <div class="service-col">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.6z"/>
+            </svg>
+          </div>
+          <h3>Familien- &amp; Erbrecht</h3>
+          <p>Trennung, Scheidung, Unterhalt oder Streit ums Erbe berühren das Persönlichste. Wir begleiten Sie einfühlsam durch das Verfahren, klären Ansprüche zu Sorge- und Umgangsrecht und sorgen mit klaren Regelungen, etwa im Testament oder Erbvertrag, für Sicherheit über den akuten Fall hinaus.</p>
+        </div>
+
+        <div class="service-col">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L3 6.5v5c0 5.25 4.5 9.5 9 9.5s9-4.25 9-9.5v-5L12 2z"/>
+            </svg>
+          </div>
+          <h3>Straf- &amp; Ordnungswidrigkeitenrecht</h3>
+          <p>Vom Bußgeldbescheid bis zur Vorladung durch die Polizei: Wir prüfen die Aktenlage frühzeitig, sichern Ihre Rechte im Ermittlungsverfahren und verteidigen Sie konsequent vor Gericht – ruhig und sachlich, auch wenn die Situation für Sie das nicht ist.</p>
+        </div>
+
+        <div class="service-col md:col-span-2">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </div>
+          <h3>Allgemeine Rechtsberatung</h3>
+          <p style="max-width:62ch;">Nicht jede Rechtsfrage passt in eine Schublade. Für alle übrigen Anliegen erhalten Sie bei uns eine ehrliche Ersteinschätzung – und, wenn ein anderes Fachgebiet gefragt ist, die Vermittlung an spezialisierte Kolleginnen und Kollegen. Rufen Sie uns einfach an oder schreiben Sie kurz, wir ordnen Ihr Anliegen gemeinsam mit Ihnen ein.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Ablauf ─────────────────────────────────── -->
+  <section class="bg-[#f2ebe0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline">
+      <div class="mb-16 max-w-2xl">
+        <span class="eyebrow">So arbeiten wir</span>
+        <h2 class="text-3xl font-normal mb-5">Ablauf einer Mandatsbearbeitung</h2>
+        <p class="text-stone-500 text-sm leading-[1.85] font-light">
+          Transparenz beginnt vor dem ersten Termin, nicht erst mit der Rechnung.
+          Deshalb folgt jedes Mandat, unabhängig vom Rechtsgebiet, demselben
+          nachvollziehbaren Ablauf – so wissen Sie von Anfang an, was Sie
+          erwartet und was es kostet.
+        </p>
+      </div>
+      <hr class="rule mb-14">
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="process-step">
+          <span class="process-num">01</span>
+          <h3>Erstkontakt</h3>
+          <p>Sie schildern uns Ihr Anliegen – telefonisch, per Mail oder im persönlichen Gespräch. Unverbindlich und ohne Kostenrisiko.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">02</span>
+          <h3>Ersteinschätzung</h3>
+          <p>Innerhalb von 24 Stunden erhalten Sie eine erste rechtliche Einordnung sowie eine transparente Einschätzung der Kosten.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">03</span>
+          <h3>Strategie</h3>
+          <p>Gemeinsam legen wir das Vorgehen fest – außergerichtlich oder vor Gericht, je nachdem, was in Ihrem Interesse liegt.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">04</span>
+          <h3>Umsetzung</h3>
+          <p>Wir vertreten Sie konsequent bis zum Abschluss und halten Sie währenddessen jederzeit auf dem Laufenden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Referenzen ─────────────────────────────── -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline">
+      <div class="mb-16 max-w-2xl">
+        <span class="eyebrow">Referenzen</span>
+        <h2 class="text-3xl font-normal mb-5">Was Mandanten sagen</h2>
+        <p class="text-stone-500 text-sm leading-[1.85] font-light">
+          Am ehesten lässt sich unsere Arbeit an den Menschen ablesen, die sie
+          in Anspruch genommen haben. Eine kleine Auswahl an Rückmeldungen,
+          anonymisiert und mit freundlicher Genehmigung veröffentlicht.
+        </p>
+      </div>
+
+      <div>
+        <div class="testimonial-row">
+          <p class="testimonial-text">„Ich fühlte mich vom ersten Telefonat an gut beraten. Frau Ishar hat mir die Situation verständlich erklärt und klar gesagt, was realistisch ist – ohne mir etwas zu versprechen, das sie nicht halten kann.“</p>
+          <p class="testimonial-name">T. K. — Mandant im Arbeitsrecht</p>
+        </div>
+        <div class="testimonial-row">
+          <p class="testimonial-text">„Diskret, schnell erreichbar und immer auf den Punkt. Genau das, was man sich in einer Scheidung wünscht, wenn ohnehin schon vieles unsicher ist.“</p>
+          <p class="testimonial-name">M. R. — Mandantin im Familienrecht</p>
+        </div>
+        <div class="testimonial-row">
+          <p class="testimonial-text">„Kompetente Vertragsprüfung, verständlich erklärt – ohne dass ich mir erst ein Jurastudium aneignen musste, um zu verstehen, worauf ich mich einlasse.“</p>
+          <p class="testimonial-name">S. B. — Mandant im Vertragsrecht</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ────────────────────────────────────── -->
+  <section class="bg-[#f2ebe0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline">
+      <div class="max-w-3xl">
+      <div class="mb-14">
+        <span class="eyebrow">Häufige Fragen</span>
+        <h2 class="text-3xl font-normal mb-0">Gut zu wissen</h2>
+      </div>
+
+      <div>
+        <details class="faq-item" open>
+          <summary>Was kostet das Erstgespräch?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <p>Das Erstgespräch ist für Privatpersonen kostenfrei und unverbindlich. Im Anschluss erläutern wir transparent, mit welchen Kosten Sie im weiteren Verfahren rechnen können.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Wie schnell bekomme ich einen Termin?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <p>In dringenden Fällen – etwa bei laufenden Fristen – bieten wir in der Regel innerhalb von 48 Stunden einen Termin an.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Übernimmt meine Rechtsschutzversicherung die Kosten?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <p>Wir prüfen gemeinsam mit Ihnen Ihre Versicherungsunterlagen und klären die Kostenübernahme direkt mit Ihrer Rechtsschutzversicherung.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Ich habe eine Frist erhalten – was soll ich tun?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <p>Melden Sie sich umgehend telefonisch bei uns. Bei Kündigungen etwa läuft die Klagefrist von nur drei Wochen ab Zugang – hier zählt jeder Tag.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Beraten Sie auch online oder telefonisch?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <p>Ja. Viele Erstgespräche und laufende Abstimmungen finden auf Wunsch per Telefon oder Videocall statt.</p>
+        </details>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Kontakt ───────────────────────────────── -->
+  <section id="kontakt" class="bg-stone-900 border-t border-[#78716c]/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline-dark kontakt-bg" style="position:relative;">
+      <span class="keyline-cross tl dark" aria-hidden="true"></span>
+      <span class="keyline-cross tr dark" aria-hidden="true"></span>
+      <div class="mb-12 max-w-2xl">
+        <span class="eyebrow" style="color:#93c5fd;">Kontakt</span>
+        <h2 class="text-3xl font-normal mb-5 text-white">Sprechen Sie uns an.</h2>
+        <p class="text-stone-200 text-sm leading-[1.85] font-normal mb-8">
+          Egal ob Kündigung, Vertrag, Trennung oder Vorladung – je früher wir
+          von Ihrem Anliegen erfahren, desto mehr Handlungsspielraum haben wir.
+          Melden Sie sich, wir hören zu.
+        </p>
+        <div class="flex flex-wrap gap-3 mb-4">
+          <a href="mailto:kanzlei@sadig-ishar.de" class="btn-primary rounded-md px-6 py-2.5 text-sm font-medium">E-Mail schreiben</a>
+          <a href="tel:+493012345678" class="btn-secondary-inverse rounded-md px-6 py-2.5 text-sm font-medium">Anrufen</a>
+        </div>
+        <p class="hero-trust" style="color:rgba(255,255,255,.6);">Unverbindlich &amp; vertraulich · ohne Kostenrisiko</p>
+      </div>
+      <hr class="rule mb-12" style="border-top-color:rgba(255,255,255,.2);">
+      <div class="grid md:grid-cols-3 gap-0 md:divide-x md:divide-white/15">
+        <div class="info-col pb-8 md:pb-0 md:pr-10">
+          <span class="col-label">Adresse</span>
+          <span>Musterstraße 1</span>
+          <span>10115 Berlin</span>
+        </div>
+        <div class="info-col py-8 md:py-0 md:px-10">
+          <span class="col-label">Telefon</span>
+          <a href="tel:+493012345678">+49 30 12345678</a>
+          <div class="mt-4">
+            <div class="hours-row"><span>Mo – Do</span><span>09:00 – 17:00 Uhr</span></div>
+            <div class="hours-row"><span>Freitag</span><span>09:00 – 14:00 Uhr</span></div>
+          </div>
+        </div>
+        <div class="info-col pt-8 md:pt-0 md:pl-10">
+          <span class="col-label">E-Mail</span>
+          <a href="mailto:kanzlei@sadig-ishar.de">kanzlei@sadig-ishar.de</a>
+          <span class="info-note">Wir antworten innerhalb<br>von 24 Stunden.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ───────────────────────────────── -->
+  <footer class="bg-stone-900 border-t border-stone-800" style="border-bottom:1px solid rgba(255,255,255,.08);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 keyline-dark" style="position:relative;">
+      <span class="keyline-cross bl dark" aria-hidden="true"></span>
+      <span class="keyline-cross br dark" aria-hidden="true"></span>
+
+      <div class="grid md:grid-cols-[1.3fr_1fr_1fr_1fr] gap-x-10 gap-y-12 pb-14 border-b border-stone-800">
+        <div>
+          <span class="text-white font-semibold text-lg" style="font-family:'Roboto Slab',serif; letter-spacing:.1em;">SADIG ISHAR</span>
+          <p class="text-stone-300 text-sm leading-[1.85] mt-4" style="max-width:30ch;">
+            Rechtsanwältin für Arbeits-, Vertrags- und Familienrecht in Berlin.
+            Persönlich, diskret und mit klarer Haltung.
+          </p>
+        </div>
+
+        <div>
+          <span class="footer-col-label">Rechtsgebiete</span>
+          <nav class="flex flex-col gap-3 mt-4">
+            <a href="#leistungen" class="footer-link">Arbeitsrecht</a>
+            <a href="#leistungen" class="footer-link">Vertragsrecht</a>
+            <a href="#leistungen" class="footer-link">Familien- &amp; Erbrecht</a>
+            <a href="#leistungen" class="footer-link">Straf- &amp; OWi-Recht</a>
+          </nav>
+        </div>
+
+        <div>
+          <span class="footer-col-label">Kanzlei</span>
+          <nav class="flex flex-col gap-3 mt-4">
+            <a href="#" class="footer-link">Über uns</a>
+            <a href="#" class="footer-link">Team</a>
+            <a href="#" class="footer-link">Karriere</a>
+            <a href="#kontakt" class="footer-link">Kontakt</a>
+          </nav>
+        </div>
+
+        <div>
+          <span class="footer-col-label">Kontakt</span>
+          <div class="flex flex-col gap-3 mt-4">
+            <a href="tel:+493012345678" class="footer-link">+49 30 12345678</a>
+            <a href="mailto:kanzlei@sadig-ishar.de" class="footer-link">kanzlei@sadig-ishar.de</a>
+            <a href="#kontakt" class="footer-link" style="color:#93c5fd;">Adresse &amp; Sprechzeiten →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-stone-400 text-sm">
+        <span>&copy; 2025 Sadig Ishar – Rechtsanwältin. Alle Rechte vorbehalten.</span>
+        <span class="footer-geo">52.5200° N · 13.4050° E — BERLIN</span>
+        <div class="flex gap-6">
+          <a href="impressum.html" class="footer-link" style="display:inline;">Impressum</a>
+          <a href="datenschutz.html" class="footer-link" style="display:inline;">Datenschutz</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ─── JavaScript ────────────────────────────── -->
+  <script>
+    /* ── Slide-in Mobilmenü ── */
+    const mobBtn      = document.getElementById('mob-btn');
+    const mobOverlay  = document.getElementById('mob-overlay');
+    const mobBackdrop = document.getElementById('mob-backdrop');
+
+    function closeMob() {
+      mobOverlay.classList.remove('open');
+      mobBackdrop.classList.remove('open');
+      mobBtn.classList.remove('open');
+      mobBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    mobBtn.addEventListener('click', () => {
+      const open = mobOverlay.classList.toggle('open');
+      mobBackdrop.classList.toggle('open', open);
+      mobBtn.classList.toggle('open', open);
+      mobBtn.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+
+    mobBackdrop.addEventListener('click', closeMob);
+
+    /* ── Mobile Sub-Menüs ── */
+    function setupMobSub(btnId, panelId, chevId) {
+      const btn   = document.getElementById(btnId);
+      const panel = document.getElementById(panelId);
+      const chev  = document.getElementById(chevId);
+      let open = false;
+      btn.addEventListener('click', () => {
+        open = !open;
+        panel.classList.toggle('hidden', !open);
+        if (chev) chev.style.transform = open ? 'rotate(180deg)' : '';
+      });
+    }
+    setupMobSub('mob-about-btn',    'mobile-about-menu',    'mob-about-chev');
+    setupMobSub('mob-services-btn', 'mobile-services-menu', 'mob-services-chev');
+
+    /* ── Desktop-Dropdowns (unverändert) ── */
+    function setupDelayedDropdown(groupSelector, menuSelector, delay = 500) {
+      const group = document.querySelector(groupSelector);
+      const menu = group.querySelector(menuSelector);
+      let hideTimeout;
+      group.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimeout);
+        menu.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-1');
+        menu.classList.add('opacity-100', 'translate-y-0');
+      });
+      group.addEventListener('mouseleave', () => {
+        hideTimeout = setTimeout(() => {
+          menu.classList.add('opacity-0', 'pointer-events-none', 'translate-y-1');
+          menu.classList.remove('opacity-100', 'translate-y-0');
+        }, delay);
+      });
+    }
+    setupDelayedDropdown('.group:nth-of-type(1)', 'div');
+    setupDelayedDropdown('.group:nth-of-type(2)', 'div');
+  </script>
+
+</body>
+</html>
