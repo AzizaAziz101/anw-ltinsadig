@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
@@ -60,6 +60,16 @@
 
     /* ── Hero ────────────────────────────────── */
     .hero-section { background:#fdf8f1; }
+    .hero-grid { display:grid; }
+    @media (min-width:768px) {
+      .hero-grid {
+        grid-template-columns:1.05fr 1fr;
+        grid-template-areas: "top image" "bottom image";
+      }
+      .hero-top    { grid-area:top; }
+      .hero-bottom { grid-area:bottom; }
+      .hero-image-col { grid-area:image; }
+    }
     .hero-trust {
       font-size:.78rem; color:#78716c; font-weight:400;
     }
@@ -419,18 +429,27 @@
 
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 keyline" style="overflow:hidden;">
 
-      <div class="grid md:grid-cols-[1.05fr_1fr] items-stretch">
+      <div class="hero-grid">
 
-        <!-- Text-Spalte -->
-        <div class="py-16 md:py-24 pr-4 md:pr-10 flex flex-col justify-center">
+        <!-- Text-Spalte oben -->
+        <div class="hero-top pt-16 md:pt-24 pr-4 md:pr-10 flex flex-col md:justify-end">
             <span class="eyebrow">Rechtsanwältin · Berlin</span>
             <h1 class="mb-5" style="font-family:'Roboto Slab',serif; font-weight:700; font-size:clamp(1.55rem,2.9vw,2.15rem); line-height:1.15; letter-spacing:-.015em; color:#1c1917;">
-              Als Rechtsanwältin vertrete ich Sie – in Berlin und bundesweit.
+              Als Rechtsanwältin vertrete ich Sie in Berlin und bundesweit.
             </h1>
-            <p class="hero-question mb-7" style="max-width:38ch;">
+            <p class="hero-question" style="max-width:38ch;">
               Sie haben eine Kündigung oder eine Vorladung erhalten? Sie stehen
               vor einer Trennung oder haben Ärger mit einem Vertrag?
             </p>
+        </div>
+
+        <!-- Bild-Spalte -->
+        <div class="hero-image-col hero-photo-full my-8 md:my-0">
+          <img src="anwältin.jpg" alt="Rechtsanwältin Sadig Ishar" style="filter:contrast(1.03) saturate(0.95);">
+        </div>
+
+        <!-- Text-Spalte unten -->
+        <div class="hero-bottom pb-16 md:pb-24 pr-4 md:pr-10 flex flex-col md:justify-start">
             <span style="display:block; font-family:'Roboto Slab',serif; font-weight:700; font-size:clamp(1.3rem,2.3vw,1.65rem); letter-spacing:-.01em; color:#2563eb; margin-bottom:.5rem;">Rufen Sie einfach an –</span>
             <a href="tel:+493012345678" class="hero-phone-cta is-blue mb-3">+49 30 12345678</a>
             <p class="hero-question mb-6" style="max-width:34ch; font-size:.9rem;">
@@ -439,11 +458,6 @@
             <div class="flex flex-wrap items-center gap-5">
               <a href="#leistungen" class="text-sm font-medium text-stone-600 hover:text-stone-900">oder Leistungen ansehen →</a>
             </div>
-        </div>
-
-        <!-- Bild-Spalte -->
-        <div class="hero-photo-full">
-          <img src="anwältin.jpg" alt="Rechtsanwältin Sadig Ishar" style="filter:contrast(1.03) saturate(0.95);">
         </div>
 
       </div>
