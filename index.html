@@ -74,19 +74,12 @@
       background:#14110e; overflow:hidden;
     }
     .hero-media { position:absolute; inset:0; }
-    .hero-media img {
+    .hero-media img,
+    .hero-media video {
       width:100%; height:100%; display:block;
-      object-fit:cover; object-position:center 18%;
+      object-fit:cover; object-position:center 20%;
       filter:grayscale(.12) contrast(1.05);
     }
-    /* Ken-Burns nur auf Desktop – auf Mobil wirkt das beim Scrollen unruhig */
-    @media (min-width:768px) and (prefers-reduced-motion:no-preference) {
-      .hero-media img {
-        transform:scale(1.04);
-        animation:hero-drift 18s ease-out forwards;
-      }
-    }
-    @keyframes hero-drift { to { transform:scale(1); } }
     .hero-media::after {
       content:''; position:absolute; inset:0;
       background:
@@ -511,7 +504,10 @@
   <section class="hero">
 
     <div class="hero-media">
-      <img src="anwältin.jpg" alt="Rechtsanwältin Sadig Ishar" />
+      <video class="hero-video" autoplay muted loop playsinline preload="auto"
+             poster="anwältin.jpg" aria-hidden="true">
+        <source src="lawyer.mp4" type="video/mp4" />
+      </video>
     </div>
 
     <div class="hero-inner max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 keyline-dark" style="position:relative;">
@@ -956,6 +952,17 @@
        das Hintergrundbild wird neu skaliert. Safari macht das nicht.
        Wir frieren die Hero-Höhe auf den Wert beim Laden ein und aktualisieren
        nur bei echten Breitenänderungen (Rotation / Fenstergröße). */
+    /* Hero-Video zuverlässig starten (einige Browser brauchen den Play-Anstoß per JS) */
+    (function heroVideo() {
+      const v = document.querySelector('.hero-video');
+      if (!v) return;
+      v.muted = true;                       // Property, nicht nur Attribut → erlaubt Autoplay
+      const play = () => { const p = v.play(); if (p) p.catch(() => {}); };
+      play();
+      v.addEventListener('canplay', play, { once: true });
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) play(); });
+    })();
+
     (function lockHeroHeight() {
       const root = document.documentElement;
       let lastW = window.innerWidth;
