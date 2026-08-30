@@ -67,6 +67,7 @@
       position:relative;
       min-height:90vh;
       min-height:90svh;
+      min-height:var(--hero-lock, 90svh);
       display:flex; align-items:stretch;
       background:#14110e; overflow:hidden;
     }
@@ -920,6 +921,26 @@
     }
     setupDelayedDropdown('.group:nth-of-type(1)', 'div');
     setupDelayedDropdown('.group:nth-of-type(2)', 'div');
+
+    /* ── Hero-Höhe fixieren ──
+       Chrome & Firefox auf Android reflowen die Seite, wenn beim Scrollen
+       die Adressleiste ein-/ausblendet – dadurch springt der Hero-Text und
+       das Hintergrundbild wird neu skaliert. Safari macht das nicht.
+       Wir frieren die Hero-Höhe auf den Wert beim Laden ein und aktualisieren
+       nur bei echten Breitenänderungen (Rotation / Fenstergröße). */
+    (function lockHeroHeight() {
+      const root = document.documentElement;
+      let lastW = window.innerWidth;
+      const apply = () => root.style.setProperty('--hero-lock', window.innerHeight + 'px');
+      apply();
+      window.addEventListener('resize', () => {
+        if (Math.abs(window.innerWidth - lastW) > 60) {
+          lastW = window.innerWidth;
+          apply();
+        }
+      }, { passive: true });
+      window.addEventListener('orientationchange', () => setTimeout(apply, 250));
+    })();
   </script>
 
 </body>
