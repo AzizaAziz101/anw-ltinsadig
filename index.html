@@ -196,6 +196,20 @@
     .process-step p { font-size:.85rem; color:#57534e; line-height:1.75; }
 
     /* ── Referenzen ───────────────────────────── */
+    .referenzen { position:relative; overflow:hidden; }
+    .referenzen > div { position:relative; z-index:1; }
+    .ref-shapes {
+      position:absolute; z-index:0; pointer-events:none;
+      top:-7rem; right:-10rem; width:44rem; max-width:120vw; height:auto;
+    }
+    .ref-shapes circle {
+      fill:#2563eb; fill-opacity:.09;
+      mix-blend-mode:multiply;
+    }
+    @media (max-width:767px) {
+      .ref-shapes { top:-3rem; right:-14rem; width:32rem; }
+    }
+
     .testimonial-row { padding:2rem 0; border-top:1px solid #e7e5e4; }
     .testimonial-row:last-child { border-bottom:1px solid #e7e5e4; }
     .testimonial-text {
@@ -534,7 +548,7 @@
       <span class="keyline-cross tr dark" aria-hidden="true"></span>
       <div class="mb-16 max-w-2xl">
         <span class="eyebrow" style="color:#2563eb;">Unsere Grundsätze</span>
-        <h2 class="text-3xl font-normal mb-5 text-white">Philosophie</h2>
+        <h2 class="text-3xl font-normal mb-5" style="color:#111111;">Philosophie</h2>
         <p class="text-stone-200 text-sm leading-[1.85] font-light">
           Rechtsberatung ist Vertrauenssache. Wir verstehen unsere Aufgabe
           deshalb nicht nur als juristisches Handwerk, sondern als
@@ -697,7 +711,12 @@
   </section>
 
   <!-- ─── Referenzen ─────────────────────────────── -->
-  <section class="bg-white">
+  <section class="bg-white referenzen">
+    <svg class="ref-shapes" viewBox="0 0 420 360" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="150" cy="160" r="135"/>
+      <circle cx="280" cy="120" r="135"/>
+      <circle cx="230" cy="255" r="135"/>
+    </svg>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline">
       <div class="mb-16 max-w-2xl">
         <span class="eyebrow">Referenzen</span>
