@@ -66,6 +66,7 @@
     .hero {
       position:relative;
       min-height:90vh;
+      min-height:90svh;
       display:flex; align-items:stretch;
       background:#14110e; overflow:hidden;
     }
@@ -74,8 +75,13 @@
       width:100%; height:100%; display:block;
       object-fit:cover; object-position:center 18%;
       filter:grayscale(.12) contrast(1.05);
-      transform:scale(1.04);
-      animation:hero-drift 18s ease-out forwards;
+    }
+    /* Ken-Burns nur auf Desktop – auf Mobil wirkt das beim Scrollen unruhig */
+    @media (min-width:768px) and (prefers-reduced-motion:no-preference) {
+      .hero-media img {
+        transform:scale(1.04);
+        animation:hero-drift 18s ease-out forwards;
+      }
     }
     @keyframes hero-drift { to { transform:scale(1); } }
     .hero-media::after {
