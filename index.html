@@ -58,47 +58,100 @@
       color:#2563eb;
     }
 
-    /* ── Hero ────────────────────────────────── */
-    .hero-section { background:#fdf8f1; }
-    .hero-grid { display:grid; }
-    @media (min-width:768px) {
-      .hero-grid {
-        grid-template-columns:1.05fr 1fr;
-        grid-template-areas: "top image" "bottom image";
-      }
-      .hero-top    { grid-area:top; }
-      .hero-bottom { grid-area:bottom; }
-      .hero-image-col { grid-area:image; }
-    }
     .hero-trust {
       font-size:.78rem; color:#78716c; font-weight:400;
     }
 
-    /* ── Hero-Bild (großformatig, ausgeschnitten) ─ */
-    .hero-photo-full { position:relative; min-height:380px; background:#e2d5c0; }
-    .hero-photo-full img {
-      position:absolute; inset:0; width:100%; height:100%;
-      object-fit:cover; object-position:center 15%; display:block;
+    /* ── Hero (kinematisch · minimal) ──────────── */
+    .hero {
+      position:relative;
+      min-height:90vh;
+      display:flex; align-items:stretch;
+      background:#14110e; overflow:hidden;
     }
-    .hero-photo-full::after {
+    .hero-media { position:absolute; inset:0; }
+    .hero-media img {
+      width:100%; height:100%; display:block;
+      object-fit:cover; object-position:center 18%;
+      filter:grayscale(.12) contrast(1.05);
+      transform:scale(1.04);
+      animation:hero-drift 18s ease-out forwards;
+    }
+    @keyframes hero-drift { to { transform:scale(1); } }
+    .hero-media::after {
       content:''; position:absolute; inset:0;
-      background:linear-gradient(100deg, #fdf8f1 0%, rgba(253,248,241,0) 18%);
+      background:
+        linear-gradient(180deg, rgba(20,17,14,.10) 0%, rgba(20,17,14,0) 28%, rgba(20,17,14,.55) 68%, rgba(20,17,14,.94) 100%),
+        linear-gradient(90deg, rgba(20,17,14,.80) 0%, rgba(20,17,14,.20) 52%, rgba(20,17,14,0) 100%);
     }
 
-    /* ── Hero-Typografie & Anruf-CTA ───────────── */
-    .hero-question {
-      font-size:1rem; font-weight:400; color:#57534e; line-height:1.75;
+    .hero-inner {
+      position:relative; z-index:2; width:100%;
+      padding-top:8rem; padding-bottom:4rem;
+      display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end;
     }
-    .hero-phone-cta {
-      display:inline-block;
+    .hero-eyebrow {
+      order:1;
+      display:flex; align-items:center; gap:.9rem;
+      font-family:'Inter',sans-serif;
+      font-size:.7rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase;
+      color:#2563eb; margin-bottom:1.7rem;
+    }
+    .hero-eyebrow::before { content:''; width:2.75rem; height:1px; background:#2563eb; }
+    .hero-headline  { order:2; }
+    .hero-sub       { order:3; }
+    .hero-actions   { order:4; }
+
+    /* Mobil: Rolle unter die Headline */
+    @media (max-width:767px) {
+      .hero-headline { order:1; margin-bottom:1.1rem; }
+      .hero-eyebrow  { order:2; margin:0 0 1.6rem; }
+      .hero-sub      { order:3; }
+      .hero-actions  { order:4; }
+    }
+
+    .hero-headline {
       font-family:'Roboto Slab',serif; font-weight:700;
-      font-size:clamp(1.6rem,2.8vw,2.1rem); letter-spacing:-.01em;
-      color:#2563eb; text-decoration:none;
-      border-bottom:3px solid #c2650b; padding-bottom:.2rem;
-      transition:color .2s, border-color .2s;
+      font-size:clamp(2.6rem, 7.2vw, 5.4rem);
+      line-height:.97; letter-spacing:-.03em;
+      color:#fff; margin:0 0 1.6rem; max-width:15ch;
     }
-    .hero-phone-cta:hover { color:#c2650b; border-color:#2563eb; }
-    .hero-phone-cta.is-blue { color:#2563eb; border-color:#2563eb; }
+    .hero-sub {
+      font-size:clamp(1rem,1.35vw,1.15rem); line-height:1.7; font-weight:300;
+      color:rgba(255,255,255,.72); max-width:46ch; margin:0 0 2.6rem;
+    }
+
+    .hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:1.5rem 2.75rem; }
+    .hero-call {
+      display:inline-flex; flex-direction:column; gap:.35rem;
+      text-decoration:none;
+      border-bottom:2px solid #2563eb; padding-bottom:.35rem;
+    }
+    .hero-call .lbl {
+      font-family:'Inter',sans-serif; font-size:.7rem; font-weight:600;
+      letter-spacing:.2em; text-transform:uppercase; color:#2563eb;
+    }
+    .hero-call .num {
+      font-family:'Roboto Slab',serif; font-weight:700;
+      font-size:clamp(1.5rem,2.6vw,2rem); letter-spacing:-.01em;
+      color:#fff;
+    }
+
+    .hero-secondary {
+      font-family:'Inter',sans-serif;
+      font-size:.78rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+      color:rgba(255,255,255,.68); text-decoration:none; transition:color .2s;
+    }
+    .hero-secondary:hover { color:#fff; }
+
+    .hero-meta {
+      position:absolute; left:0; right:0; bottom:1.5rem; z-index:2;
+      font-family:'Inter',sans-serif;
+      font-size:.68rem; letter-spacing:.16em; text-transform:uppercase;
+      color:rgba(255,255,255,.42);
+      display:flex; justify-content:space-between; gap:1rem;
+    }
+    @media (max-width:640px) { .hero-meta { display:none; } }
 
     /* ── Philosophie ──────────────────────────── */
     .phil-col { padding-top:1.75rem; border-top:2px solid #2563eb; }
@@ -425,48 +478,42 @@
   </div>
 
   <!-- ─── Hero ──────────────────────────────────── -->
-  <section class="hero-section relative overflow-hidden">
+  <section class="hero">
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 keyline" style="overflow:hidden;">
+    <div class="hero-media">
+      <img src="anwältin.jpg" alt="Rechtsanwältin Sadig Ishar" />
+    </div>
 
-      <div class="hero-grid">
+    <div class="hero-inner max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 keyline-dark" style="position:relative;">
+      <span class="keyline-cross tl dark" aria-hidden="true"></span>
+      <span class="keyline-cross tr dark" aria-hidden="true"></span>
 
-        <!-- Text-Spalte oben -->
-        <div class="hero-top pt-16 md:pt-24 pr-4 md:pr-10 flex flex-col md:justify-end">
-            <span class="eyebrow">Rechtsanwältin · Berlin</span>
-            <h1 class="mb-5" style="font-family:'Roboto Slab',serif; font-weight:700; font-size:clamp(1.55rem,2.9vw,2.15rem); line-height:1.15; letter-spacing:-.015em; color:#1c1917;">
-              Ihre Rechtsanwältin in Berlin und bundesweit.
-            </h1>
-            <p class="hero-question" style="max-width:38ch;">
-              Sie haben eine Kündigung oder eine Vorladung erhalten? Sie stehen
-              vor einer Trennung oder haben Ärger mit einem Vertrag?
-            </p>
-        </div>
+      <span class="hero-eyebrow">Rechtsanwältin · Berlin &amp; bundesweit</span>
 
-        <!-- Bild-Spalte -->
-        <div class="hero-image-col hero-photo-full my-8 md:my-0">
-          <img src="anwältin.jpg" alt="Rechtsanwältin Sadig Ishar" style="filter:contrast(1.03) saturate(0.95);">
-        </div>
+      <h1 class="hero-headline">Wenn es<br>darauf ankommt.</h1>
 
-        <!-- Text-Spalte unten -->
-        <div class="hero-bottom pb-16 md:pb-24 pr-4 md:pr-10 flex flex-col md:justify-start">
-            <span style="display:block; font-family:'Roboto Slab',serif; font-weight:700; font-size:clamp(1.3rem,2.3vw,1.65rem); letter-spacing:-.01em; color:#2563eb; margin-bottom:.5rem;">Rufen Sie einfach an –</span>
-            <a href="tel:+493012345678" class="hero-phone-cta is-blue mb-3">+49 30 12345678</a>
-            <p class="hero-question mb-6" style="max-width:34ch; font-size:.9rem;">
-              für eine kostenlose, unverbindliche Ersteinschätzung.
-            </p>
-            <div class="flex flex-wrap items-center gap-5">
-              <a href="#leistungen" class="text-sm font-medium text-stone-600 hover:text-stone-900">oder Leistungen ansehen →</a>
-            </div>
-        </div>
+      <p class="hero-sub">
+        Kündigung, Vertrag, Trennung oder Vorladung – Sie brauchen jetzt keine
+        Broschüre, sondern eine klare, ehrliche Einschätzung.
+      </p>
 
+      <div class="hero-actions">
+        <a href="tel:+493012345678" class="hero-call">
+          <span class="lbl">Jetzt anrufen</span>
+          <span class="num">+49 30 12345678</span>
+        </a>
+        <a href="#leistungen" class="hero-secondary">Leistungen ansehen →</a>
       </div>
+    </div>
+
+    <div class="hero-meta max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span>Kostenlose Ersteinschätzung</span>
     </div>
   </section>
 
   <!-- ─── Philosophie ───────────────────────────── -->
-  <section class="bg-[#f2ebe0] border-t border-[#e2d5c0]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline-dark philosophie-bg" style="position:relative;">
+  <section class="philosophie-bg border-t border-[#e2d5c0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline-dark" style="position:relative;">
       <span class="keyline-cross tl dark" aria-hidden="true"></span>
       <span class="keyline-cross tr dark" aria-hidden="true"></span>
       <div class="mb-16 max-w-2xl">
