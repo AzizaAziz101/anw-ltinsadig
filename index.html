@@ -80,6 +80,11 @@
       object-fit:cover; object-position:center 20%;
       filter:grayscale(.12) contrast(1.05);
     }
+    /* Mobil: das Video passt eh nicht ganz rein – rechte Hälfte zeigen */
+    @media (max-width:767px) {
+      .hero-media img,
+      .hero-media video { object-position:78% 20%; }
+    }
     .hero-media::after {
       content:''; position:absolute; inset:0;
       background:
