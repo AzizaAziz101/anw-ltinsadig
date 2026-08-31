@@ -178,83 +178,157 @@
         url('kanzlei.jpg') center 35% / cover no-repeat;
     }
 
+    /* ═══════════════════════════════════════════════
+       Kapitel-System – alles ab „Leistungen“
+       Eine durchgehende Papierfläche, ein Raster,
+       ein Typo-Set. Übergänge fließen über Seams.
+       ═══════════════════════════════════════════════ */
+    :root {
+      --paper:#f6f2ec;
+      --ink:#1c1917;
+      --ink-soft:#5c554e;
+      --ink-faint:#8a8178;
+      --line:rgba(28,25,23,.14);
+      --line-soft:rgba(28,25,23,.09);
+      --brand:#2563eb;
+      --night:#141414;
+    }
+
+    .paper { background:var(--paper); }
+    .chapter { position:relative; border-top:1px solid var(--line-soft); }
+    .chapter:first-of-type { border-top:0; }
+
+    /* Nahtübergänge zwischen den Farbzonen */
+    .seam { height:clamp(4rem,9vw,6.5rem); border:0; margin:0; display:block; }
+    .seam--dp { background:linear-gradient(#141414, var(--paper)); }
+    .seam--pd { background:linear-gradient(var(--paper), #141414); }
+
+    /* Kapitel-Kopf */
+    .chapter-head { max-width:44rem; margin-bottom:clamp(2.75rem,5.5vw,4.25rem); }
+    .chapter-meta { display:flex; align-items:center; gap:1rem; margin-bottom:1.4rem; }
+    .chapter-index {
+      font-family:'Roboto Slab',serif; font-weight:700;
+      font-size:.72rem; letter-spacing:.14em; color:var(--brand);
+    }
+    .chapter-meta .eyebrow { margin:0; }
+    .chapter-meta::after {
+      content:''; flex:1 1 auto; height:1px; background:var(--line);
+    }
+    .chapter-title {
+      font-family:'Roboto Slab',serif; font-weight:400;
+      font-size:clamp(1.95rem,3.7vw,2.85rem); line-height:1.08; letter-spacing:-.022em;
+      color:var(--ink); margin:0 0 1.35rem;
+    }
+    .chapter-lead {
+      font-size:clamp(.96rem,1.05vw,1.06rem); line-height:1.85; font-weight:400;
+      color:var(--ink-soft); margin:0;
+    }
+    .chapter-rule { border:0; border-top:1px solid var(--line); margin:0 0 clamp(2.5rem,5vw,3.5rem); }
+
+    /* Nacht-Variante (Kontakt) */
+    .chapter--night .chapter-meta::after { background:rgba(255,255,255,.16); }
+    .chapter--night .chapter-title { color:#fff; }
+    .chapter--night .chapter-lead { color:rgba(255,255,255,.75); }
+    .chapter--night .chapter-rule { border-top-color:rgba(255,255,255,.16); }
+
+    /* Scroll-Reveal */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+    .reveal.is-in { opacity:1; transform:none; }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+
     /* ── Leistungen ───────────────────────────── */
-    .service-col { padding-top:1.75rem; border-top:1px solid #e7e5e4; }
-    .service-icon { color:#2563eb; margin-bottom:1rem; }
-    .service-col h3 { font-size:1.05rem; font-weight:600; margin-bottom:.6rem; }
-    .service-col p { font-size:.9rem; color:#57534e; line-height:1.85; }
+    .service-col { padding-top:2rem; border-top:1px solid var(--line); transition:border-color .3s; }
+    .service-col:hover { border-top-color:var(--brand); }
+    .service-icon { color:var(--brand); margin-bottom:1.15rem; }
+    .service-col h3 {
+      font-family:'Roboto Slab',serif; font-size:1.16rem; font-weight:600;
+      letter-spacing:-.01em; margin-bottom:.75rem; color:var(--ink);
+    }
+    .service-col p { font-size:.93rem; color:var(--ink-soft); line-height:1.85; }
 
     /* ── Ablauf / Prozess ─────────────────────── */
-    .process-step { position:relative; padding-top:1.5rem; border-top:1px solid #e7e5e4; }
+    .process-step { position:relative; padding-top:1.5rem; border-top:1px solid var(--line); }
     .process-num {
-      font-family:'Roboto Slab',serif; font-weight:700; font-size:.85rem;
-      color:#2563eb; letter-spacing:.05em; margin-bottom:.75rem; display:block;
+      font-family:'Roboto Slab',serif; font-weight:700; font-size:2.4rem;
+      color:rgba(37,99,235,.22); letter-spacing:-.02em; line-height:1;
+      margin-bottom:1.1rem; display:block;
     }
-    .process-step h3 { font-size:1rem; font-weight:600; margin-bottom:.5rem; }
-    .process-step p { font-size:.85rem; color:#57534e; line-height:1.75; }
+    .process-step h3 {
+      font-family:'Roboto Slab',serif; font-size:1.05rem; font-weight:600;
+      margin-bottom:.6rem; color:var(--ink);
+    }
+    .process-step p { font-size:.88rem; color:var(--ink-soft); line-height:1.8; }
 
     /* ── Referenzen ───────────────────────────── */
     .referenzen { position:relative; overflow:hidden; }
     .referenzen > div { position:relative; z-index:1; }
     .ref-shapes {
       position:absolute; z-index:0; pointer-events:none;
-      top:-7rem; right:-10rem; width:44rem; max-width:120vw; height:auto;
-    }
-    .ref-shapes circle {
-      fill:#2563eb; fill-opacity:.09;
+      top:clamp(-6rem,-3vw,-2.5rem); right:-13rem;
+      width:min(53rem,116vw); height:auto;
       mix-blend-mode:multiply;
     }
-    @media (max-width:767px) {
-      .ref-shapes { top:-3rem; right:-14rem; width:32rem; }
-    }
+    .ref-shapes .disc  { fill:var(--brand); fill-opacity:.05; }
+    .ref-shapes .ring  { fill:none; stroke:var(--brand); stroke-opacity:.24; stroke-width:1; }
+    .ref-shapes .ring--gold { stroke:#c9a86a; stroke-opacity:.42; }
+    @media (max-width:767px) { .ref-shapes { top:-3.5rem; right:-17rem; width:36rem; } }
 
-    .testimonial-row { padding:2rem 0; border-top:1px solid #e7e5e4; }
-    .testimonial-row:last-child { border-bottom:1px solid #e7e5e4; }
+    .testimonial-row { padding:clamp(2rem,4vw,2.75rem) 0; border-top:1px solid var(--line); }
+    .testimonial-row:last-child { border-bottom:1px solid var(--line); }
     .testimonial-text {
       font-family:'Roboto Slab',serif; font-weight:300; font-style:italic;
-      font-size:1.05rem; color:#44403c; line-height:1.75; max-width:56ch;
+      font-size:clamp(1.12rem,1.55vw,1.35rem); color:#332f2b; line-height:1.66; max-width:54ch;
     }
-    .testimonial-name { font-size:.78rem; color:#a8a29e; margin-top:1rem; letter-spacing:.05em; text-transform:uppercase; }
+    .testimonial-text::before {
+      content:'“'; font-family:'Roboto Slab',serif; font-style:normal;
+      color:#c9a86a; font-size:1.4em; line-height:0; margin-right:.12em; vertical-align:-.35em;
+    }
+    .testimonial-name {
+      font-size:.7rem; color:var(--ink-faint); margin-top:1.35rem;
+      letter-spacing:.16em; text-transform:uppercase;
+    }
 
     /* ── FAQ ──────────────────────────────────── */
-    .faq-item { border-bottom:1px solid #e7e5e4; }
+    .faq-item { border-bottom:1px solid var(--line); }
+    .faq-item:first-child { border-top:1px solid var(--line); }
     .faq-item summary {
-      list-style:none; cursor:pointer; padding:1.35rem 0;
+      list-style:none; cursor:pointer; padding:1.55rem 0;
       display:flex; align-items:center; justify-content:space-between; gap:1rem;
-      font-size:.975rem; font-weight:500; color:#292524;
+      font-size:1.02rem; font-weight:500; color:var(--ink);
+      transition:color .2s;
     }
+    .faq-item summary:hover { color:var(--brand); }
     .faq-item summary::-webkit-details-marker { display:none; }
-    .faq-chevron { flex-shrink:0; color:#a8a29e; transition:transform .2s; }
-    .faq-item[open] .faq-chevron { transform:rotate(180deg); color:#2563eb; }
-    .faq-item p { font-size:.875rem; color:#57534e; line-height:1.8; padding:0 0 1.5rem; max-width:60ch; }
+    .faq-chevron { flex-shrink:0; color:var(--ink-faint); transition:transform .25s, color .2s; }
+    .faq-item[open] .faq-chevron { transform:rotate(180deg); color:var(--brand); }
+    .faq-item p { font-size:.93rem; color:var(--ink-soft); line-height:1.85; padding:0 0 1.7rem; max-width:64ch; }
 
-    /* ── Kontakt Info ─────────────────────────── */
+    /* ── Kontakt (Nacht) ──────────────────────── */
     .info-col a, .info-col span {
       display:block; font-size:.9rem; font-weight:500; color:#f5f5f4; line-height:1.9; transition:color .2s;
     }
-    .info-col a:hover { color:#2563eb; }
+    .info-col a:hover { color:#93b4ff; }
     .info-col .col-label {
       font-size:.65rem; font-weight:600; letter-spacing:.2em;
-      text-transform:uppercase; color:#a8a29e; margin-bottom:.4rem; display:block;
+      text-transform:uppercase; color:#8a8178; margin-bottom:.4rem; display:block;
     }
     .hours-row { display:flex; gap:2rem; line-height:1.9; }
     .hours-row span { font-size:.82rem; font-weight:400; color:#d6d3d1; }
-    .hours-row span:first-child { color:#a8a29e; min-width:9rem; }
-
-    /* ── Kontakt Hintergrundbild ───────────────── */
+    .hours-row span:first-child { color:#8a8178; min-width:9rem; }
     .kontakt-bg {
       background:
-        linear-gradient(rgba(20,17,14,.84), rgba(20,17,14,.88)),
+        linear-gradient(rgba(15,15,15,.86), rgba(15,15,15,.9)),
         url('gericht.jpg') center 30% / cover no-repeat;
     }
     .info-col .info-note {
-      margin-top:1rem; font-size:.8rem; font-weight:400; color:#a8a29e; line-height:1.7;
+      margin-top:1rem; font-size:.8rem; font-weight:400; color:#8a8178; line-height:1.7;
     }
 
     /* ── Footer ───────────────────────────────── */
+    .site-footer { background:var(--night); }
     .footer-col-label {
       font-size:.7rem; font-weight:600; letter-spacing:.16em;
-      text-transform:uppercase; color:#a8a29e;
+      text-transform:uppercase; color:#8a8178;
     }
     .footer-link { display:block; font-size:.925rem; color:#d6d3d1; line-height:1.9; text-decoration:none; transition:color .2s; }
     .footer-link:hover { color:#ffffff; }
@@ -385,6 +459,7 @@
     /* Anchor-Offset */
     section[id] { scroll-margin-top:80px; }
   </style>
+  <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
 </head>
 <body class="bg-white">
 
@@ -600,21 +675,28 @@
     </div>
   </section>
 
+  <hr class="seam seam--dp" aria-hidden="true">
+
   <!-- ─── Leistungen ────────────────────────────── -->
-  <section id="leistungen" class="bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline">
-      <div class="mb-16 max-w-2xl">
-        <span class="eyebrow">Rechtsgebiete</span>
-        <h2 class="text-3xl font-normal mb-5">Leistungen</h2>
-        <p class="text-stone-500 text-sm leading-[1.85] font-light">
+  <section id="leistungen" class="paper chapter">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline" style="position:relative;">
+      <span class="keyline-cross tl" aria-hidden="true"></span>
+      <span class="keyline-cross tr" aria-hidden="true"></span>
+      <header class="chapter-head reveal">
+        <div class="chapter-meta">
+          <span class="chapter-index">01</span>
+          <span class="eyebrow">Rechtsgebiete</span>
+        </div>
+        <h2 class="chapter-title">Leistungen</h2>
+        <p class="chapter-lead">
           Wir decken die Rechtsbereiche ab, die im Alltag von Privatpersonen und
           Unternehmen am häufigsten zu Fragen führen – strukturiert, kompetent
           und mit Fokus auf Ihr Ergebnis.
         </p>
-      </div>
-      <hr class="rule mb-14">
+      </header>
+      <hr class="chapter-rule">
 
-      <div class="grid md:grid-cols-2 gap-x-16 gap-y-14">
+      <div class="grid md:grid-cols-2 gap-x-16 gap-y-14 reveal">
 
         <div class="service-col">
           <div class="service-icon">
@@ -672,21 +754,26 @@
   </section>
 
   <!-- ─── Ablauf ─────────────────────────────────── -->
-  <section class="bg-[#f2ebe0]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline">
-      <div class="mb-16 max-w-2xl">
-        <span class="eyebrow">So arbeiten wir</span>
-        <h2 class="text-3xl font-normal mb-5">Ablauf einer Mandatsbearbeitung</h2>
-        <p class="text-stone-500 text-sm leading-[1.85] font-light">
+  <section class="paper chapter">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline" style="position:relative;">
+      <span class="keyline-cross tl" aria-hidden="true"></span>
+      <span class="keyline-cross tr" aria-hidden="true"></span>
+      <header class="chapter-head reveal">
+        <div class="chapter-meta">
+          <span class="chapter-index">02</span>
+          <span class="eyebrow">So arbeiten wir</span>
+        </div>
+        <h2 class="chapter-title">Ablauf einer Mandatsbearbeitung</h2>
+        <p class="chapter-lead">
           Transparenz beginnt vor dem ersten Termin, nicht erst mit der Rechnung.
           Deshalb folgt jedes Mandat, unabhängig vom Rechtsgebiet, demselben
           nachvollziehbaren Ablauf – so wissen Sie von Anfang an, was Sie
           erwartet und was es kostet.
         </p>
-      </div>
-      <hr class="rule mb-14">
+      </header>
+      <hr class="chapter-rule">
 
-      <div class="grid md:grid-cols-4 gap-8">
+      <div class="grid md:grid-cols-4 gap-8 reveal">
         <div class="process-step">
           <span class="process-num">01</span>
           <h3>Erstkontakt</h3>
@@ -712,24 +799,32 @@
   </section>
 
   <!-- ─── Referenzen ─────────────────────────────── -->
-  <section class="bg-white referenzen">
-    <svg class="ref-shapes" viewBox="0 0 420 360" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="150" cy="160" r="135"/>
-      <circle cx="280" cy="120" r="135"/>
-      <circle cx="230" cy="255" r="135"/>
+  <section class="paper chapter referenzen">
+    <svg class="ref-shapes" viewBox="0 0 460 400" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <circle class="disc" cx="165" cy="160" r="148"/>
+      <circle class="disc" cx="300" cy="140" r="148"/>
+      <circle class="disc" cx="235" cy="270" r="148"/>
+      <circle class="ring" cx="165" cy="160" r="148"/>
+      <circle class="ring ring--gold" cx="300" cy="140" r="148"/>
+      <circle class="ring" cx="235" cy="270" r="148"/>
     </svg>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline">
-      <div class="mb-16 max-w-2xl">
-        <span class="eyebrow">Referenzen</span>
-        <h2 class="text-3xl font-normal mb-5">Was Mandanten sagen</h2>
-        <p class="text-stone-500 text-sm leading-[1.85] font-light">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline" style="position:relative;">
+      <span class="keyline-cross tl" aria-hidden="true"></span>
+      <span class="keyline-cross tr" aria-hidden="true"></span>
+      <header class="chapter-head reveal">
+        <div class="chapter-meta">
+          <span class="chapter-index">03</span>
+          <span class="eyebrow">Referenzen</span>
+        </div>
+        <h2 class="chapter-title">Was Mandanten sagen</h2>
+        <p class="chapter-lead">
           Am ehesten lässt sich unsere Arbeit an den Menschen ablesen, die sie
           in Anspruch genommen haben. Eine kleine Auswahl an Rückmeldungen,
           anonymisiert und mit freundlicher Genehmigung veröffentlicht.
         </p>
-      </div>
+      </header>
 
-      <div>
+      <div class="reveal">
         <div class="testimonial-row">
           <p class="testimonial-text">„Ich fühlte mich vom ersten Telefonat an gut beraten. Frau Ishar hat mir die Situation verständlich erklärt und klar gesagt, was realistisch ist – ohne mir etwas zu versprechen, das sie nicht halten kann.“</p>
           <p class="testimonial-name">T. K. — Mandant im Arbeitsrecht</p>
@@ -747,15 +842,20 @@
   </section>
 
   <!-- ─── FAQ ────────────────────────────────────── -->
-  <section class="bg-[#f2ebe0]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline">
+  <section class="paper chapter">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline" style="position:relative;">
+      <span class="keyline-cross tl" aria-hidden="true"></span>
+      <span class="keyline-cross tr" aria-hidden="true"></span>
       <div class="max-w-3xl">
-      <div class="mb-14">
-        <span class="eyebrow">Häufige Fragen</span>
-        <h2 class="text-3xl font-normal mb-0">Gut zu wissen</h2>
-      </div>
+      <header class="chapter-head reveal">
+        <div class="chapter-meta">
+          <span class="chapter-index">04</span>
+          <span class="eyebrow">Häufige Fragen</span>
+        </div>
+        <h2 class="chapter-title">Gut zu wissen</h2>
+      </header>
 
-      <div>
+      <div class="reveal">
         <details class="faq-item" open>
           <summary>Was kostet das Erstgespräch?
             <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -791,26 +891,31 @@
     </div>
   </section>
 
+  <hr class="seam seam--pd" aria-hidden="true">
+
   <!-- ─── Kontakt ───────────────────────────────── -->
-  <section id="kontakt" class="bg-stone-900 border-t border-[#78716c]/40">
+  <section id="kontakt" class="chapter chapter--night" style="background:#141414;">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 keyline-dark kontakt-bg" style="position:relative;">
       <span class="keyline-cross tl dark" aria-hidden="true"></span>
       <span class="keyline-cross tr dark" aria-hidden="true"></span>
-      <div class="mb-12 max-w-2xl">
-        <span class="eyebrow" style="color:#2563eb;">Kontakt</span>
-        <h2 class="text-3xl font-normal mb-5 text-white">Sprechen Sie uns an.</h2>
-        <p class="text-stone-200 text-sm leading-[1.85] font-normal mb-8">
+      <header class="chapter-head reveal">
+        <div class="chapter-meta">
+          <span class="chapter-index">05</span>
+          <span class="eyebrow" style="color:#2563eb;">Kontakt</span>
+        </div>
+        <h2 class="chapter-title">Sprechen Sie uns an.</h2>
+        <p class="chapter-lead">
           Egal ob Kündigung, Vertrag, Trennung oder Vorladung – je früher wir
           von Ihrem Anliegen erfahren, desto mehr Handlungsspielraum haben wir.
           Melden Sie sich, wir hören zu.
         </p>
-        <div class="flex flex-wrap gap-3 mb-4">
+        <div class="flex flex-wrap gap-3 mt-8 mb-4">
           <a href="mailto:kanzlei@sadig-ishar.de" class="btn-primary rounded-md px-6 py-2.5 text-sm font-medium">E-Mail schreiben</a>
           <a href="tel:+493012345678" class="btn-secondary-inverse rounded-md px-6 py-2.5 text-sm font-medium">Anrufen</a>
         </div>
         <p class="hero-trust" style="color:rgba(255,255,255,.6);">Unverbindlich &amp; vertraulich · ohne Kostenrisiko</p>
-      </div>
-      <hr class="rule mb-12" style="border-top-color:rgba(255,255,255,.2);">
+      </header>
+      <hr class="chapter-rule" style="margin-bottom:clamp(2.5rem,5vw,3.5rem);">
       <div class="grid md:grid-cols-3 gap-0 md:divide-x md:divide-white/15">
         <div class="info-col pb-8 md:pb-0 md:pr-10">
           <span class="col-label">Adresse</span>
@@ -835,7 +940,7 @@
   </section>
 
   <!-- ─── Footer ───────────────────────────────── -->
-  <footer class="bg-stone-900 border-t border-stone-800" style="border-bottom:1px solid rgba(255,255,255,.08);">
+  <footer class="site-footer" style="border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 keyline-dark" style="position:relative;">
       <span class="keyline-cross bl dark" aria-hidden="true"></span>
       <span class="keyline-cross br dark" aria-hidden="true"></span>
@@ -957,6 +1062,22 @@
        das Hintergrundbild wird neu skaliert. Safari macht das nicht.
        Wir frieren die Hero-Höhe auf den Wert beim Laden ein und aktualisieren
        nur bei echten Breitenänderungen (Rotation / Fenstergröße). */
+    /* Scroll-Reveal für Kapitel-Inhalte */
+    (function revealOnScroll() {
+      const els = document.querySelectorAll('.reveal');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach(el => el.classList.add('is-in'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+      els.forEach(el => io.observe(el));
+    })();
+
     /* Hero-Video zuverlässig starten (einige Browser brauchen den Play-Anstoß per JS) */
     (function heroVideo() {
       const v = document.querySelector('.hero-video');
