@@ -340,6 +340,10 @@ a { transition: color .2s, opacity .2s; }
 .keyline-cross::before { top:-0.5px; left:-4px; width:9px; height:1px; }
 .keyline-cross::after  { top:-4px; left:-0.5px; width:1px; height:9px; }
 .keyline-cross.dark::before, .keyline-cross.dark::after { background:rgba(255,255,255,.5); }
+/* dezentere Variante – z. B. Unterkante Philosophie */
+.keyline-cross.subtle::before, .keyline-cross.subtle::after { background:rgba(255,255,255,.2); }
+.keyline-cross.subtle::before { left:-3px; width:7px; }
+.keyline-cross.subtle::after  { top:-3px; height:7px; }
 .keyline-cross.tl { top:0; left:0; }
 .keyline-cross.tr { top:0; right:0; }
 .keyline-cross.bl { bottom:0; left:0; }
