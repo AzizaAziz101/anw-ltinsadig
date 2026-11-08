@@ -245,7 +245,7 @@ a { transition: color .2s, opacity .2s; }
 .process-step { position:relative; padding-top:1.5rem; border-top:1px solid var(--line); }
 .process-num {
   font-family:'Roboto Slab',serif; font-weight:700; font-size:2.4rem;
-  color:rgba(37,99,235,.22); letter-spacing:-.02em; line-height:1;
+  color:rgba(37,99,235,.8); letter-spacing:-.02em; line-height:1;
   margin-bottom:1.1rem; display:block;
 }
 .process-step h3 {
@@ -279,7 +279,7 @@ a { transition: color .2s, opacity .2s; }
   color:#c9a86a; font-size:1.4em; line-height:0; margin-right:.12em; vertical-align:-.35em;
 }
 .testimonial-name {
-  font-size:.7rem; color:var(--ink-faint); margin-top:1.35rem;
+  font-size:.7rem; color:#6f675e; margin-top:1.35rem;
   letter-spacing:.16em; text-transform:uppercase;
 }
 
@@ -329,7 +329,7 @@ a { transition: color .2s, opacity .2s; }
 .footer-link:hover { color:#ffffff; }
 .footer-geo {
   font-family:'Courier New', monospace; font-size:.7rem;
-  letter-spacing:.04em; color:#78716c;
+  letter-spacing:.04em; color:#a8a29e;
 }
 
 /* ── Keylines (reduzierter Cyberbrutalismus) ─ */

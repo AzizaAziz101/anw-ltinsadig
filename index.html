@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sadig Ishar – Rechtsanwältin Berlin</title>
   <meta name="description" content="Rechtsanwältin Sadig Ishar – Berlin. Beratung und Vertretung in Arbeitsrecht, Vertragsrecht, Familien- & Erbrecht sowie Straf- und Ordnungswidrigkeitenrecht. Persönlich, diskret, transparent." />
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="tailwind.css" />
 </head>
 <body class="bg-white">
 
@@ -137,12 +138,14 @@
     </div>
   </div>
 
+  <main id="main">
+
   <!-- ─── Hero ──────────────────────────────────── -->
   <section class="hero">
 
     <div class="hero-media">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-        <source src="lawyer.mp4" type="video/mp4" />
+      <video class="hero-video" muted loop playsinline preload="none" poster="hero-poster.jpg" aria-hidden="true">
+        <source src="hero.mp4" type="video/mp4" />
       </video>
     </div>
 
@@ -496,6 +499,8 @@
   </section>
 
   <!-- ─── Footer ───────────────────────────────── -->
+  </main>
+
   <footer class="site-footer" style="border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 keyline-dark" style="position:relative;">
       <span class="keyline-cross bl dark" aria-hidden="true"></span>
@@ -535,7 +540,7 @@
           <div class="flex flex-col gap-3 mt-4">
             <a href="tel:+493012345678" class="footer-link">+49 30 12345678</a>
             <a href="mailto:kanzlei@sadig-ishar.de" class="footer-link">kanzlei@sadig-ishar.de</a>
-            <a href="#kontakt" class="footer-link" style="color:#2563eb;">Adresse &amp; Sprechzeiten →</a>
+            <a href="#kontakt" class="footer-link" style="color:#93c5fd;">Adresse &amp; Sprechzeiten →</a>
           </div>
         </div>
       </div>
@@ -562,7 +567,7 @@
           Die Bilder und Videos dieser Website werden im Rahmen einer Premium-Lizenz von
           <a href="https://www.magnific.com" target="_blank" rel="noopener" style="text-decoration:underline; text-underline-offset:2px;">Magnific (www.magnific.com)</a> genutzt.
         </p>
-        <p style="margin:0; color:#6b6560;">
+        <p style="margin:0; color:#a8a29e;">
           Texte, Design und Quellcode sind urheberrechtlich geschützt (§§&nbsp;2&nbsp;ff. UrhG).
           Jede Vervielfältigung oder Übernahme bedarf der vorherigen schriftlichen Zustimmung von Antonio&nbsp;Hoeft.
         </p>
@@ -658,10 +663,17 @@
       const v = document.querySelector('.hero-video');
       if (!v) return;
       v.muted = true;                       // Property, nicht nur Attribut → erlaubt Autoplay
+      // Schmale Bildschirme / Datensparmodus: kleinere Video-Fassung laden (0,6 statt 1,4 MB)
+      const conn = navigator.connection;
+      if (window.matchMedia('(max-width: 767px)').matches || (conn && conn.saveData)) {
+        const s = v.querySelector('source');
+        if (s) { s.src = 'hero-mobile.mp4'; v.load(); }
+      }
       const play = () => { const p = v.play(); if (p) p.catch(() => {}); };
-      play();
-      v.addEventListener('canplay', play, { once: true });
-      document.addEventListener('visibilitychange', () => { if (!document.hidden) play(); });
+      // Erst nach dem Laden der Seite starten, damit das Video den ersten Eindruck nicht ausbremst
+      const start = () => setTimeout(play, 200);
+      if (document.readyState === 'complete') start(); else window.addEventListener('load', start, { once: true });
+      document.addEventListener('visibilitychange', () => { if (!document.hidden && v.currentTime > 0) play(); });
     })();
 
     (function lockHeroHeight() {
